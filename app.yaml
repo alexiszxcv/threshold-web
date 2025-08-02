@@ -1,0 +1,18 @@
+runtime: nodejs20
+env: standard
+
+env_variables:
+  MONGODB_URI: "mongodb+srv://mercialexis7:kQUiAAWDEiW1nJAD@cluster0.jywh1bn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  NODE_ENV: "production"
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 10
+  target_cpu_utilization: 0.6
+
+# For Node on App Engine, handlers can be omitted.
+# If you keep them, both map to Next, not a separate backend.
+handlers:
+- url: /.*
+  script: auto
+  secure: always

@@ -1,0 +1,34 @@
+# Google Cloud Build configuration for Cloud Run
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build', 
+      '-t', 'gcr.io/$PROJECT_ID/threshold-app',
+      '--build-arg', 'NEXT_PUBLIC_API_URL=https://threshold-1054224705034.us-east4.run.app',
+      '--build-arg', 'NEXT_PUBLIC_APP_URL=https://threshold-1054224705034.us-east4.run.app',
+      '.'
+    ]
+
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/threshold-app']
+
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: [
+      'run', 'deploy', 'threshold-app',
+      '--image', 'gcr.io/$PROJECT_ID/threshold-app',
+      '--region', 'us-east4',
+      '--platform', 'managed',
+      '--allow-unauthenticated',
+      '--port', '3000',
+      '--memory', '2Gi',
+      '--cpu', '1',
+      '--timeout', '300',
+      '--set-env-vars', 'NODE_ENV=production,FRONTEND_URL=https://threshold-1054224705034.us-east4.run.app,MONGODB_URI=mongodb+srv://mercialexis7:kQUiAAWDEiW1nJAD@cluster0.jywh1bn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0,MONGODB_DB=threshold'
+    ]
+
+images:
+  - gcr.io/$PROJECT_ID/threshold-app
