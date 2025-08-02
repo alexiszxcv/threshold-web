@@ -25,11 +25,12 @@ A contemplative digital sanctuary built with Next.js and MongoDB, designed for r
 
 - **🏛️ Hallway** - Navigate between spaces
 
-<img width="329" height="310" alt="Screenshot 2025-08-02 at 12 20 16 AM" src="https://github.com/user-attachments/assets/7c004765-9c78-40d7-aa63-6db5b7f0dbb8" />
+<img width="704" height="441" alt="Screenshot 2025-08-02 at 12 22 25 AM" src="https://github.com/user-attachments/assets/186f40e8-756a-4bc4-b402-5825f3839ab1" />
+
 
 - **🎵 Soundscape** - Ambient audio for contemplation
 
-<img width="364" height="413" alt="Screenshot 2025-08-02 at 12 20 42 AM" src="https://github.com/user-attachments/assets/0b7fa136-1090-43dc-aae3-c05b2fc594e2" />
+<img width="735" height="553" alt="Screenshot 2025-08-02 at 12 22 07 AM" src="https://github.com/user-attachments/assets/168a2748-e98d-49f9-a7f9-e19e46aac459" />
 
 
 ### Technical Features
