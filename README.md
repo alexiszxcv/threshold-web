@@ -21,7 +21,7 @@ A contemplative digital sanctuary built with Next.js and MongoDB, designed for r
 
 - **🤫 Confessional** - Share anonymous confessions
 
-<img width="273" height="298" alt="Screenshot 2025-08-02 at 12 19 52 AM" src="https://github.com/user-attachments/assets/7c80ce31-7191-4e41-bb8b-8e82fcf5cbb5" />
+<img width="599" height="403" alt="Screenshot 2025-08-02 at 12 23 02 AM" src="https://github.com/user-attachments/assets/12ed6603-32ab-4d9d-bc31-28b42bad08e4" />
 
 - **🏛️ Hallway** - Navigate between spaces
 
