@@ -2,15 +2,35 @@
 
 A contemplative digital sanctuary built with Next.js and MongoDB, designed for reflection, growth, and anonymous sharing in a liminal space between day and night.
 
+<img width="417" height="677" alt="Screenshot 2025-08-02 at 12 18 27 AM" src="https://github.com/user-attachments/assets/2b1b0379-63e6-4232-ba80-bee6af961a47" />
+
 ## 🌟 Features
 
 ### Core Spaces
 - **📖 Library** - Journal your thoughts and experiences
+
+<img width="594" height="454" alt="Screenshot 2025-08-02 at 12 18 52 AM" src="https://github.com/user-attachments/assets/edf5ccd6-711f-4153-ad14-cfb53f39a3cc" />
+
 - **🌱 Garden** - Track personal growth moments
+
+<img width="440" height="474" alt="Screenshot 2025-08-02 at 12 19 09 AM" src="https://github.com/user-attachments/assets/bb7fb91f-e47d-4912-ba10-26ee95bb51de" />
+
 - **💌 Mailroom** - Send and receive anonymous letters
+
+<img width="457" height="608" alt="Screenshot 2025-08-02 at 12 19 32 AM" src="https://github.com/user-attachments/assets/b32b548d-41f9-404d-9f67-ceb7af26363c" />
+
 - **🤫 Confessional** - Share anonymous confessions
+
+<img width="273" height="298" alt="Screenshot 2025-08-02 at 12 19 52 AM" src="https://github.com/user-attachments/assets/7c80ce31-7191-4e41-bb8b-8e82fcf5cbb5" />
+
 - **🏛️ Hallway** - Navigate between spaces
+
+<img width="329" height="310" alt="Screenshot 2025-08-02 at 12 20 16 AM" src="https://github.com/user-attachments/assets/7c004765-9c78-40d7-aa63-6db5b7f0dbb8" />
+
 - **🎵 Soundscape** - Ambient audio for contemplation
+
+<img width="364" height="413" alt="Screenshot 2025-08-02 at 12 20 42 AM" src="https://github.com/user-attachments/assets/0b7fa136-1090-43dc-aae3-c05b2fc594e2" />
+
 
 ### Technical Features
 - **Real-time Data** - MongoDB integration for persistent storage
