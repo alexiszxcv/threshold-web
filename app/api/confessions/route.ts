@@ -30,29 +30,39 @@ export async function GET() {
 }
 
 // POST - Create new confession
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const db = await getDb("threshold");         // runtime connect
+    const { content, duration } = await request.json();
+    
+    if (!content || typeof content !== 'string') {
+      return Response.json({ error: 'Content is required and must be a string' }, { status: 400 });
+    }
+    
+    if (!duration || !['temporary', 'permanent'].includes(duration)) {
+      return Response.json({ error: 'Duration must be either "temporary" or "permanent"' }, { status: 400 });
+    }
 
-    const confession: Omit<Confession, "_id"> = {
-      duration: body.duration ?? 0,
-      timestamp: new Date().toISOString(),
+    const db = await getDb();
+    const result = await db.collection('confessions').insertOne({
+      content,
+      duration,
       createdAt: new Date(),
-    };
-
-    const result = await db.collection("confessions").insertOne(confession);
-
-    return NextResponse.json({
-      success: true,
-      id: result.insertedId,
-      message: "Your voice has been heard and released",
+      ...(duration === 'temporary' && { expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000) })
     });
+
+    return Response.json({ 
+      id: result.insertedId, 
+      content, 
+      duration, 
+      createdAt: new Date().toISOString() 
+    }, { status: 201 });
   } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to record confession" },
-      { status: 500 }
-    );
+    console.error('Error recording confession:', error);
+    return Response.json({ 
+      error: 'Failed to record confession',
+      details: error instanceof Error ? error.message : 'Unknown error',
+      stack: process.env.NODE_ENV === 'development' ? (error instanceof Error ? error.stack : '') : undefined
+    }, { status: 500 });
   }
 }
 

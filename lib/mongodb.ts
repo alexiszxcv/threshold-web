@@ -10,7 +10,13 @@ export async function getClient(): Promise<MongoClient> {
   if (client) return client;
   if (!connecting) {
     connecting = (async () => {
-      const c = new MongoClient(uri);
+      const c = new MongoClient(uri, {
+        serverSelectionTimeoutMS: 10000, // 10 seconds
+        connectTimeoutMS: 10000,
+        socketTimeoutMS: 0,
+        maxPoolSize: 10,
+        retryWrites: true,
+      });
       await c.connect();
       client = c;
       return c;
