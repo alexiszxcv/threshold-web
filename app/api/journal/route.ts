@@ -2,9 +2,11 @@
 export const dynamic = "force-dynamic";
 
 import { type NextRequest, NextResponse } from "next/server";
+import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import type { JournalEntry } from "@/lib/models/JournalEntry";
 
+// GET - Read journal entries
 export async function GET() {
   try {
     const db = await getDb("threshold"); // runtime connect
@@ -15,7 +17,11 @@ export async function GET() {
       .limit(10)
       .toArray();
 
-    return NextResponse.json(entries);
+    return NextResponse.json({
+      success: true,
+      data: entries,
+      count: entries.length
+    });
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to fetch entries" },
@@ -24,6 +30,7 @@ export async function GET() {
   }
 }
 
+// POST - Create new journal entry
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -50,6 +57,88 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to create entry" },
+      { status: 500 }
+    );
+  }
+}
+
+// PUT - Update journal entry
+export async function PUT(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { id, ...updateData } = body;
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: "Journal entry ID is required" },
+        { status: 400 }
+      );
+    }
+
+    const db = await getDb("threshold");
+    const result = await db.collection("journal_entries").updateOne(
+      { _id: new ObjectId(id) },
+      { 
+        $set: { 
+          ...updateData, 
+          updatedAt: new Date() 
+        } 
+      }
+    );
+
+    if (result.matchedCount === 0) {
+      return NextResponse.json(
+        { error: "Journal entry not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: "Journal entry updated",
+      modifiedCount: result.modifiedCount
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to update journal entry" },
+      { status: 500 }
+    );
+  }
+}
+
+// DELETE - Delete journal entry
+export async function DELETE(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: "Journal entry ID is required" },
+        { status: 400 }
+      );
+    }
+
+    const db = await getDb("threshold");
+    const result = await db.collection("journal_entries").deleteOne({
+      _id: new ObjectId(id)
+    });
+
+    if (result.deletedCount === 0) {
+      return NextResponse.json(
+        { error: "Journal entry not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: "Journal entry deleted",
+      deletedCount: result.deletedCount
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to delete journal entry" },
       { status: 500 }
     );
   }
