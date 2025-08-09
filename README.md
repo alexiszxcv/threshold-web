@@ -2,6 +2,8 @@
 
 A contemplative digital sanctuary built with Next.js and MongoDB, designed for reflection, growth, and anonymous sharing in a liminal space between day and night.
 
+<img width="417" height="677" alt="Screenshot 2025-08-02 at 12 18 27 AM" src="https://github.com/user-attachments/assets/2b1b0379-63e6-4232-ba80-bee6af961a47" />
+
 ## 🎯 Iteration 2 - CRUD Implementation Complete
 
 This application fully satisfies the Iteration 2 requirements with comprehensive CRUD operations across all core modules.
