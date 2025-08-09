@@ -11,13 +11,23 @@ export async function getClient(): Promise<MongoClient> {
   if (!connecting) {
     connecting = (async () => {
       const c = new MongoClient(uri, {
-        serverSelectionTimeoutMS: 10000, // 10 seconds
+        serverSelectionTimeoutMS: 5000,
         connectTimeoutMS: 10000,
         socketTimeoutMS: 0,
         maxPoolSize: 10,
         retryWrites: true,
+        maxIdleTimeMS: 30000,
+        // SSL/TLS settings for Cloud compatibility
+        tls: true,
+        tlsAllowInvalidCertificates: false,
+        authSource: 'admin',
       });
       await c.connect();
+      
+      // Test the connection
+      await c.db("admin").command({ ismaster: 1 });
+      console.log("MongoDB connected successfully");
+      
       client = c;
       return c;
     })();

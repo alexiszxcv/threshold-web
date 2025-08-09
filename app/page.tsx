@@ -16,6 +16,9 @@ export default function HomePage() {
             </div>
           </div>
           <p className="text-gray-600 italic">a living emotional habitat</p>
+          <Link href="/admin" className="inline-block mt-4 text-xs text-gray-400 hover:text-gray-600 transition-colors">
+            admin
+          </Link>
         </header>
 
         {/* Grid of rooms */}

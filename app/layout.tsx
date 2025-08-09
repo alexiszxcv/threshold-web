@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import ErrorBoundary from "@/components/ErrorBoundary"
+import PerformanceMonitor from "@/components/PerformanceMonitor"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,9 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+            {children}
+            <PerformanceMonitor />
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )
