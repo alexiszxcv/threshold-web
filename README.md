@@ -63,31 +63,31 @@ can u add this to the repo github read me:
 
 ## Iteration 3 
 
-# 1. Admin Dashboard (/admin)
+### 1. Admin Dashboard (/admin)
 Real-time Statistics: Live counts for all content types across modules
 System Health Monitoring: Database connectivity and API status checks
 Tabbed Interface: Organized management for Journal, Letters, Confessions, and Growth
 Content Management: Direct links to view each room/module
 Production-Ready: Error handling and loading states
 
-# 2. Global Error Handling
+### 2. Global Error Handling
 Error Boundary Component: Catches and displays user-friendly error messages
 Development vs Production: Shows error details in dev, clean messages in production
 Recovery Options: "Try Again" and "Return Home" functionality
 Graceful Degradation: Application continues working even with partial failures
 
-# 3. Performance Monitoring
+### 3. Performance Monitoring
 Real-Time Metrics: Page load time, API response time, memory usage
 Visual Indicators: Color-coded performance badges (green/yellow/red)
 Developer Tools: Ctrl+Shift+P to toggle monitoring display
 Database Insights: Connection time estimation and health checks
 
-# 4. Enhanced User Experience
+### 4. Enhanced User Experience
 Subtle Admin Access: Clean admin link on main page
 Comprehensive Documentation: Complete technical and project documentation
 Production Optimization: Error handling, loading states, user feedback
 
-# 5. Complete Project Documentation
+### 5. Complete Project Documentation
 Technical Architecture: Full-stack overview and implementation details
 API Documentation: Complete endpoint reference with examples
 Database Schema: Detailed collection structures and relationships
